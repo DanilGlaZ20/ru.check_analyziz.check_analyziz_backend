@@ -1,0 +1,1 @@
+rootProject.name = "ru.check_analyziz.check_analyziz_backend"

@@ -8,16 +8,17 @@ import io.ktor.server.routing.*
 import ru.check_analyziz.cache.InMemoryCache
 import ru.check_analyziz.cache.TokenCache
 
+
 import java.util.*
 
 
 fun Application.configureLoginRouting() {
     routing {
-        post("login/") {
-            val receive = call.receive<LoginReceiveRemote>()
+        post("/login"){
+            val receive= call.receive<LoginReceiveRemote>()
             val first = InMemoryCache.userList.firstOrNull { it.login == receive.login }
             if (first == null) {
-                call.respond(HttpStatusCode.BadRequest)
+                call.respond(HttpStatusCode.BadRequest, "user not Found")
             } else {
                 if (first.number == receive.number) {
                     val token = UUID.randomUUID().toString()
@@ -25,9 +26,8 @@ fun Application.configureLoginRouting() {
                     call.respond(LoginResponseRemote(token = token))
                 } else call.respond(HttpStatusCode.BadRequest, "Invalid password")
             }
-
-
         }
     }
 }
+
 

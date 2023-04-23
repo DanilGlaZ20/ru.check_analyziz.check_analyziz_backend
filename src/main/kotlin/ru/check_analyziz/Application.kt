@@ -3,6 +3,7 @@ package ru.check_analyziz
 import io.ktor.server.engine.*
 import io.ktor.server.cio.*
 import org.jetbrains.exposed.sql.Database
+import ru.check_analyziz.database.products.configureProductRouting
 import ru.check_analyziz.login.configureLoginRouting
 import ru.check_analyziz.plugins.*
 import ru.check_analyziz.registration.configureRegistRouting
@@ -14,7 +15,7 @@ fun main() {
         configureLoginRouting()
         configureRegistRouting()
         configureSerialisation()
-
+        configureProductRouting()
     }.start(wait = true)
 }
 

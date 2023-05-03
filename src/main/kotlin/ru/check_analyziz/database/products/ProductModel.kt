@@ -1,11 +1,8 @@
 package ru.check_analyziz.database.products
 
 
-import org.jetbrains.exposed.sql.SqlExpressionBuilder
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import ru.check_analyziz.database.users.UserDTO
 import ru.check_analyziz.database.users.UserModel
@@ -41,10 +38,10 @@ object ProductModel: Table("checks") {
 
         //fun getAllProduct() = transaction { ProductModel.selectAll().map { ProductDTO(it[buyer], it[date], it[sum], it[shop]) } }
     }
-    fun fetchDate(dateTo:String): List<ProductDTO> {
+    fun fetchDate(dateFrom:String,dateBefore:String ): List<ProductDTO> {
         return try {
             transaction {
-                 ProductModel.select { ProductModel.date.greaterEq(dateTo) }
+                 ProductModel.select { ProductModel.date.greaterEq(dateFrom) and ProductModel.date.lessEq(dateBefore) }
                     .map {
                     ProductDTO(
                         it[buyer],

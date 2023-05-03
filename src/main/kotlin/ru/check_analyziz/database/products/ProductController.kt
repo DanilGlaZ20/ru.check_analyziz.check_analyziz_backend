@@ -11,7 +11,7 @@ class ProductController (private val call: ApplicationCall) {
     }
     suspend fun performData() {
         val dataReceiveRemote = call.receive<DataReceiveRemote>()
-        val productModel=ProductModel.fetchDate(dataReceiveRemote.dateTo)
-        call.respond(ProductModel.fetchDate(dataReceiveRemote.dateTo))
+        //val productModel=ProductModel.fetchDate(dataReceiveRemote.dateFrom,dataReceiveRemote.dateBefore)
+        call.respond(ProductModel.fetchDate(dataReceiveRemote.dateFrom,dataReceiveRemote.dateBefore))
     }
 }

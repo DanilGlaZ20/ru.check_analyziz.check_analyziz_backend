@@ -10,8 +10,5 @@ data class FetchProductResponse(
 
 @Serializable
 data class ProductResponse(
-        val buyer:String,
-        val date:String,
-        val sum:String,
-        val shop:String
+        val buyer: String, val date:String, val name_product:String,val price_product: Int, val shop: String
         )

@@ -4,6 +4,14 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class ProductDTO(val buyer:String, val date:String, val sum:String, val shop:String)
+data class ProductDTO(
+    val buyer: String,
+    val date: String,
+    val name_product: String,
+    val price_product: Int,
+    val shop: String
+) {
+
+}
 
 

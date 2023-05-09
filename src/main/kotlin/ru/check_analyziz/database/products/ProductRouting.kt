@@ -15,5 +15,14 @@ fun Application.configureProductRouting() {
             val productController = ProductController(call)
             productController.performData()
         }
+        post("/allSum"){
+            val productController = ProductController(call)
+            productController.performAllSum()
+        }
+        post("/check_analysis"){
+            val productController = ProductController(call)
+            productController.performCheckAnalysis()
+        }
+
     }
 }

@@ -10,8 +10,6 @@ data class ProductDTO(
     val name_product: String,
     val price_product: Int,
     val shop: String
-) {
-
-}
+)
 
 

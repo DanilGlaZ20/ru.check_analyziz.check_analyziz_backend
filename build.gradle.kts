@@ -18,6 +18,9 @@ application {
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
 repositories {
     mavenCentral()
 }
